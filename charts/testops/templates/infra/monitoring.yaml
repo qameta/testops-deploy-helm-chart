@@ -1,0 +1,19 @@
+{{- if .Values.monitoring.enabled }}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ template "allure-testops.fullname" . }}-monitor
+  labels:
+    app: {{ template "allure-testops.fullname" . }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "allure-testops.fullname" . }}
+      version: v1
+  endpoints:
+    - port: http
+      path: "/management/prometheus"
+      interval: 10s
+      honorLabels: true
+{{- end }}

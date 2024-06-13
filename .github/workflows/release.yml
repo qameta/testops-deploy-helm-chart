@@ -1,12 +1,9 @@
 name: Release Charts
 
-#on:
-#  push:
-#    branches:
-#      - main
-
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - master
 
 jobs:
   release:

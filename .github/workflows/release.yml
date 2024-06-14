@@ -1,9 +1,8 @@
 name: Release Charts
 
 on:
-  push:
-    branches:
-      - master
+  release:
+    types: [ published ]
 
 jobs:
   release:
@@ -20,9 +19,13 @@ jobs:
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
-      - name: Get version
+      - name: Retrieve and verify version
         run: |
           CHART_VERSION=$(grep -m 1 '^version:' charts/testops/Chart.yaml | sed 's/version:[[:space:]]*//')
+          if [ "${{ github.event.release.tag_name }}" != "${CHART_VERSION}" ]; then
+            echo "Version mismatch: release tag ${{ github.event.release.tag_name }} does not match Chart.yaml version ${CHART_VERSION}"
+            exit 1
+          fi
           echo "CHART_VERSION=$CHART_VERSION" >> $GITHUB_ENV
 
       - name: Helm publish

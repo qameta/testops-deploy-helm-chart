@@ -8,7 +8,7 @@ on:
 
 jobs:
   lint-test:
-    runs-on: [ linux, cpu16 ]
+    runs-on: cpu16
     steps:
       - name: Checkout
         uses: actions/checkout@v4

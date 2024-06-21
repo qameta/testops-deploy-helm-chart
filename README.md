@@ -16,7 +16,7 @@ Here we collected some recommendations for the database configuration to ensure 
 
 1. Download the values template file from this very repo.
 
-    https://github.com/qameta/testops-deploy-helm-chart/blob/main/charts/testops/values.yaml
+    https://github.com/qameta/testops-deploy-helm-chart/blob/master/charts/testops/values.yaml
 
 2. Update values.yaml file based on you preferences and existing infrastructure elements.
 3. Deploy Allure TestOps using Helm commands.

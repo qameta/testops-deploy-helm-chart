@@ -37,15 +37,15 @@ version: 5.3.3
 # - credsKubeSecretName is the label for the secret where chart should store registry authentication info
 ############################################################################################################
 image:
-  registry: registry_address_here
-  repository: repo_name_see_in_docs
+  registry: registry-address-here
+  repository: repo-name-see-in-docs
   imageName: testops
   pullPolicy: IfNotPresent
   authRequired:
     enabled: true
-    username: username_received_from_sales
-    password: password_received_from_sales
-    credsKubeSecretName: testops_secret_name_here
+    username: username-received-from-sales
+    password: password-received-from-sales
+    credsKubeSecretName: testops-secret-name-here
 
 ############################################################################################################
 # Deploy related

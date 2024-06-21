@@ -9,7 +9,7 @@ kubeVersion: '>= 1.14.0-0'
 
 home: https://qameta.io
 sources:
-  - https://github.com/qameta/allure-testops-deploy-helm-chart
+  - https://github.com/qameta/testops-deploy-helm-chart
 
 maintainers:
   - name: Alexey B.

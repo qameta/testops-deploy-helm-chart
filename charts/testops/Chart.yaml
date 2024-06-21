@@ -1,15 +1,15 @@
 apiVersion: v2
 name: testops
-version: 5.3.2
+version: 5.3.3
 appVersion: 5.3.3
 
-description: Allure TestOps
+description: TestOps
 
 kubeVersion: '>= 1.14.0-0'
 
 home: https://qameta.io
 sources:
-  - https://github.com/qameta/allure-testops-deploy-helm-chart
+  - https://github.com/qameta/testops-deploy-helm-chart
 
 maintainers:
   - name: Alexey B.

@@ -1,4 +1,4 @@
-# Allure TestOps deploy in kubernetes
+# Allure TestOps deploy in Kubernetes
 
 Here we give just a recap on how to deploy Allure TestOps in your own Kubernetes cluster using Helm chart maintained by Qameta Software Inc.
 
@@ -10,11 +10,11 @@ https://docs.qameta.io/allure-testops/install/kubernetes/
 
 Do not deploy PostgreSQL using this chart. Such deployment is not suitable for production.
 
-Here we collected some recommendations for the database sconfiguration to ensure acceptable performance: https://docs.qameta.io/allure-testops/install/database/
+Here we collected some recommendations for the database configuration to ensure acceptable performance: https://docs.qameta.io/allure-testops/install/database/
 
 ## values.yaml template file
 
-1. Download the values temlate file from this very repo.
+1. Download the values template file from this very repo.
 
     https://github.com/qameta/allure-testops-deploy-helm-chart/blob/main/charts/allure-testops/values.yaml
 
@@ -33,7 +33,7 @@ helm upgrade --install testops qameta/testops -f values.yaml
 
 Application creates and updates the database schema to the actual state of selected release during its first run. This process could take considerable time, and readiness probes could fail, hence for the very first run, and in case of data migrations, we recommend disabling the probes.
 
-For the sake of this very example, we operating in the namespace `testops` which could differ from yours, so copy the comands copy and execute commands consciously after checking them against the reality.
+For the sake of this very example, we operating in the namespace `testops` which could differ from yours, so copy the commands copy and execute commands consciously after checking them against the reality.
 
 ```yaml
 helm upgrade --install testops qameta/testops \
@@ -46,10 +46,10 @@ helm upgrade --install testops qameta/testops \
 
 ## Allure TestOps release upgrade
 
-1. update values.yaml `version` to the most recent releae (see https://docs.qameta.io/allure-testops/release-notes/)
+1. update values.yaml `version` to the most recent release (see https://docs.qameta.io/allure-testops/release-notes/)
 
 ```yaml
-version: 5.3.2
+version: 5.3.3
 ```
 
 2. Run Helm `repo update` to get the most recent helm chart data, and then `helm upgrade`

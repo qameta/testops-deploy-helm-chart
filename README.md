@@ -6,6 +6,10 @@ Here we give just a recap on how to deploy Allure TestOps in your own Kubernetes
 
 https://docs.qameta.io/allure-testops/install/kubernetes/
 
+## Support
+
+Chart is supported via https://help.qameta.io
+
 ## Database
 
 Do not deploy PostgreSQL using this chart. Such deployment is not suitable for production.
@@ -52,7 +56,7 @@ helm upgrade --install testops qameta/testops \
 version: 5.3.3
 ```
 
-2. Run Helm `repo update` to get the most recent helm chart data, and then `helm upgrade`
+2. Run `helm repo update` to get the most recent helm chart data, and then `helm upgrade`
 
 ```bash
 helm repo update

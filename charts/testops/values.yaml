@@ -30,20 +30,22 @@ version: 5.3.3
 # Deploy related
 # `image` section defines the source of the binary files of the application
 # this section needs to be updated as follows:
+# - registry – the name of the registry described in the documentation of the deployment with the Helm Chart or used by your company as a proxy
+# - repository – the name of the repo described in the documentation of the deployment with the Helm Chart or used by your company
 # - username - the username for images registry either owned by Qameta Software or managed by your organisation
 # - password - password for images registry either owned by Qameta Software or managed by your organisation
 # - credsKubeSecretName is the label for the secret where chart should store registry authentication info
 ############################################################################################################
 image:
-  registry: dl.qameta.io
-  repository: docker
-  imageName: allure-testops
+  registry: registry-address-here
+  repository: repo-name-see-in-docs
+  imageName: testops
   pullPolicy: IfNotPresent
   authRequired:
     enabled: true
-    username: username
-    password: password
-    credsKubeSecretName: qameta-secret
+    username: username-received-from-sales
+    password: password-received-from-sales
+    credsKubeSecretName: testops-secret-name-here
 
 ############################################################################################################
 # Deploy related

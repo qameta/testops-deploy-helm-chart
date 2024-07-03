@@ -108,6 +108,8 @@
 {{- end }}
 
 {{- define "renderCommonEnvs" }}
+  - name: ALLURE_MAIL_ROOT
+    value: "{{ .Values.email }}"
   - name: SPRING_PROFILES_ACTIVE
     value: kubernetes
   - name: ALLURE_ENDPOINT
@@ -283,16 +285,6 @@
       secretKeyRef:
         name: {{ template "allure-testops.secret.name" . }}
         key: "cryptoPass"
-  - name: ALLURE_SECURITY_USER_NAME
-    valueFrom:
-      secretKeyRef:
-        name: {{ template "allure-testops.secret.name" . }}
-        key: "username"
-  - name: ALLURE_SECURITY_USER_PASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: {{ template "allure-testops.secret.name" . }}
-        key: "password"
 {{- end }}
 
 

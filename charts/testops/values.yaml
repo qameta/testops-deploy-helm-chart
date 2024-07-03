@@ -24,7 +24,7 @@ appName: testops
 # for version upgrades, select the desired version of the application and the most recent chart
 # minimal version of Allure Testops supported by this chart is 5.3.3
 ############################################################################################################
-version: 5.3.3
+version: 5.5.0
 
 ############################################################################################################
 # Deploy related
@@ -104,11 +104,10 @@ resources:
 timeZone: "Europe/London"
 
 ############################################################################################################
-# Credentials of the super-admin
-# Good idea would be to manage admin's password via k8s secrets
+# Email address to send the invitation for user authorization with admin rights.
+# Ensure SMTP is configured to send the invite.
 ############################################################################################################
-username: admin
-password: admin
+email: you@company.com
 
 ############################################################################################################
 # cryptoPass parameter is used to encrypt sensitive data (passwords, API tokens in the database)

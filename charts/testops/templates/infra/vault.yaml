@@ -52,6 +52,12 @@ spec:
         - objectName: "ldapPass"
           key: "ldapPass"
 {{- end }}
+{{- if .Values.auth.openid.enabled }}
+        - objectName: "openIdClientSecret"
+          key: "openIdClientSecret"
+        - objectName: "openIdClientId"
+          key: "openIdClientId"
+{{- end }}
   parameters:
 {{- if .Values.vault.url }}
     vaultAddress: {{ .Values.vault.url }}
@@ -138,6 +144,16 @@ spec:
       - objectName: "ldapPass"
         secretPath: "{{ .Values.vault.secretPath }}"
         secretKey: "ldap_pass"
+{{- end }}
+
+{{- if .Values.auth.openid.enabled }}
+      - objectName: "openIdClientSecret"
+        secretPath: "{{ .Values.vault.secretPath }}"
+        secretKey: "openid_client_secret"
+
+      - objectName: "openIdClientId"
+        secretPath: "{{ .Values.vault.secretPath }}"
+        secretKey: "openid_client_id"
 {{- end }}
 
 {{- end }}

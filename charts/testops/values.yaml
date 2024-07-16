@@ -470,7 +470,7 @@ network:
 # defaultRole allowed values are ROLE_GUEST, ROLE_USER, ROLE_ADMIN
 ############################################################################################################
 auth:
-  # Available options system / saml2 / ldap
+  # Available options system / saml2 / ldap / openid
   primary: system
   # Allowed roles: ROLE_ADMIN, ROLE_USER, ROLE_GUEST
   defaultRole: ROLE_GUEST
@@ -522,6 +522,23 @@ auth:
       groupRoleAttribute: groupRoleAttribute
       roleUserGroups: roleUserGroups
       roleAdminGroups: roleAdminGroups
+  openid:
+    enabled: false
+    clientName: keycloak
+    clientId: you_client_id
+    clientSecret: your_client_secret
+    redirectUri: https://<your-domain>/login/oauth2/code/openid
+    scope: openid,email,profile
+    authorizationGrantType: authorization_code
+    authorizationUri: http://keycloak/realms/<you_realm>/protocol/openid-connect/auth
+    userinfoUri: http://keycloak/realms/<you_realm>/protocol/openid-connect/userinfo
+    issuerUri: http://keycloak/realms/<you_realm>
+    usernameAttribute: preferred_username
+    defaultRole: ROLE_GUEST
+    syncRoles: false
+    groupRoleAttribute: groupRoleAttribute
+    roleUserGroups: roleUserGroups
+    roleAdminGroups: roleAdminGroups
 
 ############################################################################################################
 # parameters define whether users can or cannot register via UI without involving administrator

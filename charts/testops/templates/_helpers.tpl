@@ -278,6 +278,45 @@
 {{- end }}
 {{- end }}
 
+{{- define "renderOPENIDEnvs" }}
+    - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OPENID_CLIENTNAME
+      value: {{ .Values.auth.openid.clientName }}
+    - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OPENID_CLIENTID
+      valueFrom:
+        secretKeyRef:
+          name: {{ template "allure-testops.secret.name" . }}
+          key: openIdClientId
+    - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OPENID_CLIENTSECRET
+      valueFrom:
+        secretKeyRef:
+          name: {{ template "allure-testops.secret.name" . }}
+          key: openIdClientSecret
+    - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OPENID_REDIRECTURI
+      value: {{ .Values.auth.openid.redirectUri }}
+    - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OPENID_SCOPE
+      value: {{ .Values.auth.openid.scope }}
+    - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OPENID_AUTHORIZATIONGRANTTYPE
+      value: {{ .Values.auth.openid.authorizationGrantType }}
+    - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OPENID_AUTHORIZATIONURI
+      value: {{ .Values.auth.openid.authorizationUri }}
+    - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OPENID_USERINFOURI
+    - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OPENID_ISSUERURI
+      value: {{ .Values.auth.openid.issuerUri }}
+    - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OPENID_USERNAMEATTRIBUTE
+      value: {{ .Values.auth.openid.usernameAttribute }}
+    - name: ALLURE_LOGIN_OPENID_DEFAULTROLE
+      value: {{ .Values.auth.openid.defaultRole }}
+{{- if .Values.auth.openid.syncRoles }}
+    - name: ALLURE_LOGIN_OPENID_SYNCROLES:
+      value: "true"
+    - name: ALLURE_LOGIN_OPENID_GROUPROLEATTRIBUTE
+      value: {{ .Values.auth.openid.groupRoleAttribute }}
+    - name: ALLURE_LOGIN_OPENID_GROUPAUTHORITIES_ROLEUSERGROUPS
+      value: {{ .Values.auth.openid.roleUserGroups }}
+    - name: ALLURE_LOGIN_OPENID_GROUPAUTHORITIES_ROLEADMINGROUPS
+      value: {{ .Values.auth.openid.roleAdminGroups }}
+{{- end }}
+{{- end }}
 
 {{- define "renderCryptoEnvs" }}
   - name: ALLURE_CRYPTO_PASSWORD

@@ -287,7 +287,7 @@ proxy:
 
 ############################################################################################################
 # App related
-# Configuration of SMTP is a must for
+# THIS IS TO BE SET to enabled: true. Configuration of SMTP is a must for the folowing.
 # - first application run and initialisation
 # - adding new local users to Allure TestOps instance
 # - restoring (resetting) lost passwords
@@ -295,11 +295,12 @@ proxy:
 # below we have correct synthetic and hence non-working example
 # please note, gmail does not allow using the real password for SMTP authentication, you need to create and use
 # so-called application password
+# the example parameters below are suitable for usage with gmail smtp (you need to add real username and password, though)
 ############################################################################################################
 smtp:
-  enabled: false
+  enabled: true
   host: smtp.gmail.com
-  port: 465
+  port: 587
   authEnabled: true
   from: noreply@testops.cloud
   username: sa-testops-smtp
@@ -307,7 +308,7 @@ smtp:
   # https://en.wikipedia.org/wiki/Opportunistic_TLS
   startTLSEnabled: true
   startTLSRequired: true
-  sslEnabled: true
+  sslEnabled: false
   sslTrust: smtp.gmail.com
 
 ############################################################################################################

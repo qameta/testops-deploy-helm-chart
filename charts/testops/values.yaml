@@ -240,17 +240,19 @@ datasources:
     # appMaxDBConnection defines the number of database connections used by single replica of Allure Testops service
     # total allowed DB connections are defined by appMaxDBConnection multiplied by value of replicaCount
     # these connections are shared between end users accessing the data via UI
+    # if uploaderDatasource is set to disabled, pleae make sure you are setting appMaxDBConnection at least equal to 10
     ############################################################################################################
-    appMaxDBConnection: 2
+    appMaxDBConnection: 10
     sslMode: prefer
 ############################################################################################################
 # App related
 # uploaderDatasource.appMaxDBConnection defines the DB connection pool used by single replica of Allure Testops service
 # for processing of the test result upload
+# if disabled, pleae make sure you are setting appMaxDBConnection at least equal to 10
 ############################################################################################################
   uploaderDatasource:
     enabled: false
-    appMaxDBConnection: 3
+    appMaxDBConnection: 5
     appConnectionTimeout: 60000
 ############################################################################################################
 # App related

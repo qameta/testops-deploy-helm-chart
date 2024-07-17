@@ -413,7 +413,7 @@ logging:
   baseLogLevel: warn
   # Security Logging Level Configuration
   securityLogLevel: warn
-  # Hikari Logging Level Configuration
+  # Hikari (related to the working with the database) Logging Level Configuration
   hikariLogLevel: warn
 
 ############################################################################################################

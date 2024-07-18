@@ -9,7 +9,7 @@
 # S3 like minio must be deployed separately on a dedicated machine with SSDs as stotage HW
 ############################################################################################################
 
-# The version of this chart is not synchronized with the version of TestOps application, 
+# The version of this chart is not synchronized with the version of TestOps application
 
 ############################################################################################################
 # Deploy related / App related

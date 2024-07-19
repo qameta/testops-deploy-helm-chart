@@ -279,31 +279,31 @@
 {{- end }}
 
 {{- define "renderOPENIDEnvs" }}
-  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OPENID_CLIENTNAME
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName }}_CLIENTNAME
     value: {{ .Values.auth.openid.clientName }}
-  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OPENID_CLIENTID
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName }}_CLIENTID
     valueFrom:
       secretKeyRef:
         name: {{ template "allure-testops.secret.name" . }}
         key: openIdClientId
-  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OPENID_CLIENTSECRET
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName }}_CLIENTSECRET
     valueFrom:
       secretKeyRef:
         name: {{ template "allure-testops.secret.name" . }}
         key: openIdClientSecret
-  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OPENID_REDIRECTURI
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName }}_REDIRECTURI
     value: {{ .Values.auth.openid.redirectUri }}
-  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OPENID_SCOPE
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_{{ .Values.auth.openid.providerName }}_SCOPE
     value: {{ .Values.auth.openid.scope }}
-  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OPENID_AUTHORIZATIONGRANTTYPE
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName }}_AUTHORIZATIONGRANTTYPE
     value: {{ .Values.auth.openid.authorizationGrantType }}
-  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OPENID_AUTHORIZATIONURI
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_{{ .Values.auth.openid.providerName }}_AUTHORIZATIONURI
     value: {{ .Values.auth.openid.authorizationUri }}
-  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OPENID_USERINFOURI
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_{{ .Values.auth.openid.providerName }}_USERINFOURI
     value: {{ .Values.auth.openid.userinfoUri }}
-  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OPENID_ISSUERURI
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_{{ .Values.auth.openid.providerName }}_ISSUERURI
     value: {{ .Values.auth.openid.issuerUri }}
-  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OPENID_USERNAMEATTRIBUTE
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_{{ .Values.auth.openid.providerName }}_USERNAMEATTRIBUTE
     value: {{ .Values.auth.openid.usernameAttribute }}
   - name: ALLURE_LOGIN_OPENID_DEFAULTROLE
     value: {{ .Values.auth.openid.defaultRole }}

@@ -532,6 +532,7 @@ auth:
   openid:
     enabled: false
     clientName: keycloak
+    providerName: GITHUB
     clientId: you_client_id
     clientSecret: your_client_secret
     redirectUri: https://<your-domain>/login/oauth2/code/openid

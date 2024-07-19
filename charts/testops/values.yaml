@@ -530,10 +530,16 @@ auth:
       roleUserGroups: roleUserGroups
       roleAdminGroups: roleAdminGroups
   openid:
+############################################################################################################
+# clientName - the name of current TestOps instance as client of OpenID provider. Name there, paste here. Do not use spaces here.
+# clientId - the ID of current TestOps instance as client of OpenID provider. Name there, paste here. Do not use spaces here.
+# providerName - the name of the OpenID provider. Do not use dashes, undersccores or spaces. One word like Keycloak will do.
+# clientSecret - if your OpenId has authentication enabled for TestOps , use here the secret
+############################################################################################################
     enabled: false
-    clientName: keycloak
-    providerName: GITHUB
-    clientId: you_client_id
+    clientName: testops
+    clientId: testops
+    providerName: keycloak
     clientSecret: your_client_secret
     redirectUri: https://<your-domain>/login/oauth2/code/openid
     scope: openid,email,profile

@@ -536,7 +536,7 @@ auth:
 # providerName - the name of the OpenID provider. Do not use dashes, undersccores or spaces. One word like Keycloak will do.
 # clientSecret - if your OpenId has authentication enabled for TestOps , use here the secret
 # redirectUri - URI to which OpenID provider is to residert the user after the authentication
-# redirectUri must contain the name of the providerm, i.e. if providerName: keycloak, then 
+# redirectUri must contain the name of the providerm, i.e. if providerName: keycloak, then
 # redirectUri is to look linke https://<your-domain>/login/oauth2/code/keycloak
 ############################################################################################################
     enabled: false

@@ -18,7 +18,7 @@
 # for version upgrades, select the desired version of the application and the most recent chart
 # minimal version of Allure Testops supported by this chart is 5.3.3
 ############################################################################################################
-version: 5.6.1
+version: 5.6.3
 
 ############################################################################################################
 # Deploy related
@@ -535,13 +535,16 @@ auth:
 # clientId - the ID of current TestOps instance as client of OpenID provider. Name there, paste here. Do not use spaces here.
 # providerName - the name of the OpenID provider. Do not use dashes, undersccores or spaces. One word like Keycloak will do.
 # clientSecret - if your OpenId has authentication enabled for TestOps , use here the secret
+# redirectUri - URI to which OpenID provider is to residert the user after the authentication
+# redirectUri must contain the name of the providerm, i.e. if providerName: keycloak, then
+# redirectUri is to look linke https://<your-domain>/login/oauth2/code/keycloak
 ############################################################################################################
     enabled: false
     clientName: testops
     clientId: testops
     providerName: keycloak
     clientSecret: your_client_secret
-    redirectUri: https://<your-domain>/login/oauth2/code/openid
+    redirectUri: https://<your-domain>/login/oauth2/code/<add_providerName_here>
     scope: openid,email,profile
     authorizationGrantType: authorization_code
     authorizationUri: http://keycloak/realms/<you_realm>/protocol/openid-connect/auth

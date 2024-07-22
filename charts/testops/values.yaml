@@ -534,7 +534,7 @@ auth:
 # clientName - the name of current TestOps instance as client of OpenID provider. Name there, paste here. Do not use spaces here.
 # clientId - the ID of current TestOps instance as client of OpenID provider. Name there, paste here. Do not use spaces here.
 # providerName - the name of the OpenID provider. Do not use dashes, undersccores or spaces. One word like Keycloak will do.
-# clientSecret - if your OpenId has authentication enabled for TestOps , use here the secret
+# clientSecret - if your OpenId has authentication enabled for TestOps, use here the secret generated for Allure TestOps
 # redirectUri - URI to which OpenID provider is to residert the user after the authentication
 # redirectUri must contain the name of the providerm, i.e. if providerName: keycloak, then
 # redirectUri is to look linke https://<your-domain>/login/oauth2/code/keycloak

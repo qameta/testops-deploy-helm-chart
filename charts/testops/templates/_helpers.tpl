@@ -198,86 +198,126 @@
 
 
 {{- define "renderLDAPEnvs" }}
-    - name: ALLURE_LOGIN_LDAP_ENABLED
-      value: "{{ .Values.auth.ldap.enabled }}"
-    - name: ALLURE_LOGIN_LDAP_DEFAULTROLE
-      value: {{ .Values.auth.defaultRole }}
-    - name: ALLURE_LOGIN_LDAP_REFERRAL
-      value: "{{ .Values.auth.ldap.referral }}"
-    - name: ALLURE_LOGIN_LDAP_LOWERCASEUSERNAMES
-      value: "{{ .Values.auth.ldap.usernamesToLowercase }}"
-    - name: ALLURE_LOGIN_LDAP_PASSWORDATTRIBUTE
-      value: "{{ .Values.auth.ldap.passwordAttribute }}"
-    - name: ALLURE_LOGIN_LDAP_URL
-      value: "{{ .Values.auth.ldap.url }}"
+  - name: ALLURE_LOGIN_LDAP_ENABLED
+    value: "{{ .Values.auth.ldap.enabled }}"
+  - name: ALLURE_LOGIN_LDAP_DEFAULTROLE
+    value: {{ .Values.auth.defaultRole }}
+  - name: ALLURE_LOGIN_LDAP_REFERRAL
+    value: "{{ .Values.auth.ldap.referral }}"
+  - name: ALLURE_LOGIN_LDAP_LOWERCASEUSERNAMES
+    value: "{{ .Values.auth.ldap.usernamesToLowercase }}"
+  - name: ALLURE_LOGIN_LDAP_PASSWORDATTRIBUTE
+    value: "{{ .Values.auth.ldap.passwordAttribute }}"
+  - name: ALLURE_LOGIN_LDAP_URL
+    value: "{{ .Values.auth.ldap.url }}"
 {{- if .Values.auth.ldap.user.dnPatterns }}
-    - name: ALLURE_LOGIN_LDAP_USERDNPATTERNS
-      value: "{{ .Values.auth.ldap.user.dnPatterns }}"
+  - name: ALLURE_LOGIN_LDAP_USERDNPATTERNS
+    value: "{{ .Values.auth.ldap.user.dnPatterns }}"
 {{- end }}
-    - name: ALLURE_LOGIN_LDAP_USERSEARCHBASE
-      value: "{{ .Values.auth.ldap.user.searchBase }}"
-    - name: ALLURE_LOGIN_LDAP_USERSEARCHFILTER
-      value: "{{ .Values.auth.ldap.user.searchFilter }}"
-    - name: ALLURE_LOGIN_LDAP_UIDATTRIBUTE
-      value: "{{ .Values.auth.ldap.uidAttribute }}"
-    - name: ALLURE_LOGIN_LDAP_SYNCROLES
-      value: "{{ .Values.auth.ldap.syncRoles }}"
+  - name: ALLURE_LOGIN_LDAP_USERSEARCHBASE
+    value: "{{ .Values.auth.ldap.user.searchBase }}"
+  - name: ALLURE_LOGIN_LDAP_USERSEARCHFILTER
+    value: "{{ .Values.auth.ldap.user.searchFilter }}"
+  - name: ALLURE_LOGIN_LDAP_UIDATTRIBUTE
+    value: "{{ .Values.auth.ldap.uidAttribute }}"
+  - name: ALLURE_LOGIN_LDAP_SYNCROLES
+    value: "{{ .Values.auth.ldap.syncRoles }}"
 {{- if .Values.auth.ldap.syncRoles }}
-    - name: ALLURE_LOGIN_LDAP_GROUPSEARCHBASE
-      value: "{{ .Values.auth.ldap.group.searchBase }}"
-    - name: ALLURE_LOGIN_LDAP_GROUPSEARCHFILTER
-      value: "{{ .Values.auth.ldap.group.searchFilter }}"
-    - name: ALLURE_LOGIN_LDAP_GROUPROLEATTRIBUTE
-      value: "{{ .Values.auth.ldap.group.roleAttribute }}"
-    - name: ALLURE_LOGIN_LDAP_GROUPAUTHORITIES_ROLEUSERGROUPS
-      value: "{{ .Values.auth.ldap.userGroupName }}"
-    - name: ALLURE_LOGIN_LDAP_GROUPAUTHORITIES_ROLEADMINGROUPS
-      value: "{{ .Values.auth.ldap.adminGroupName }}"
+  - name: ALLURE_LOGIN_LDAP_GROUPSEARCHBASE
+    value: "{{ .Values.auth.ldap.group.searchBase }}"
+  - name: ALLURE_LOGIN_LDAP_GROUPSEARCHFILTER
+    value: "{{ .Values.auth.ldap.group.searchFilter }}"
+  - name: ALLURE_LOGIN_LDAP_GROUPROLEATTRIBUTE
+    value: "{{ .Values.auth.ldap.group.roleAttribute }}"
+  - name: ALLURE_LOGIN_LDAP_GROUPAUTHORITIES_ROLEUSERGROUPS
+    value: "{{ .Values.auth.ldap.userGroupName }}"
+  - name: ALLURE_LOGIN_LDAP_GROUPAUTHORITIES_ROLEADMINGROUPS
+    value: "{{ .Values.auth.ldap.adminGroupName }}"
 {{- end }}
-    - name: ALLURE_LOGIN_LDAP_USERDN
-      valueFrom:
-        secretKeyRef:
-          name: {{ template "allure-testops.secret.name" . }}
-          key: ldapUser
-    - name: ALLURE_LOGIN_LDAP_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: {{ template "allure-testops.secret.name" . }}
-          key: ldapPass
+  - name: ALLURE_LOGIN_LDAP_USERDN
+    valueFrom:
+      secretKeyRef:
+        name: {{ template "allure-testops.secret.name" . }}
+        key: ldapUser
+  - name: ALLURE_LOGIN_LDAP_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: {{ template "allure-testops.secret.name" . }}
+        key: ldapPass
 {{- end }}
 
 
 {{- define "renderSAMLEnvs" }}
-    - name: ALLURE_LOGIN_SAML2_ENABLED
-      value: "true"
-    - name: ALLURE_LOGIN_SAML2_ID
-      value: {{ .Values.auth.saml.id }}
-    - name: ALLURE_LOGIN_SAML2_ENTITY_ID
-      value: "{{ .Values.auth.saml.entityId }}"
-    - name: ALLURE_LOGIN_SAML2_ACS_URL
-      value: "{{ .Values.auth.saml.acsUrl }}"
-    - name: ALLURE_LOGIN_SAML2_METADATA_URL
-      value: "{{ .Values.auth.saml.identityProviderMetadataUri }}"
-    - name: ALLURE_LOGIN_SAML2_DEFAULTROLE
-      value: {{ .Values.auth.defaultRole }}
-    - name: ALLURE_LOGIN_SAML2_FIRSTNAMEATTRIBUTE
-      value: {{ .Values.auth.saml.firstNameAttribute }}
-    - name: ALLURE_LOGIN_SAML2_LASTNAMEATTRIBUTE
-      value: {{ .Values.auth.saml.lastNameAttribute }}
-    - name: ALLURE_LOGIN_SAML2_EMAILATTRIBUTE
-      value: {{ .Values.auth.saml.emailAttribute }}
-    - name: ALLURE_LOGIN_SAML2_SYNCROLES
-      value: "{{ .Values.auth.saml.syncRoles }}"
+  - name: ALLURE_LOGIN_SAML2_ENABLED
+    value: "true"
+  - name: ALLURE_LOGIN_SAML2_ID
+    value: {{ .Values.auth.saml.id }}
+  - name: ALLURE_LOGIN_SAML2_ENTITY_ID
+    value: "{{ .Values.auth.saml.entityId }}"
+  - name: ALLURE_LOGIN_SAML2_ACS_URL
+    value: "{{ .Values.auth.saml.acsUrl }}"
+  - name: ALLURE_LOGIN_SAML2_METADATA_URL
+    value: "{{ .Values.auth.saml.identityProviderMetadataUri }}"
+  - name: ALLURE_LOGIN_SAML2_DEFAULTROLE
+    value: {{ .Values.auth.defaultRole }}
+  - name: ALLURE_LOGIN_SAML2_FIRSTNAMEATTRIBUTE
+    value: {{ .Values.auth.saml.firstNameAttribute }}
+  - name: ALLURE_LOGIN_SAML2_LASTNAMEATTRIBUTE
+    value: {{ .Values.auth.saml.lastNameAttribute }}
+  - name: ALLURE_LOGIN_SAML2_EMAILATTRIBUTE
+    value: {{ .Values.auth.saml.emailAttribute }}
+  - name: ALLURE_LOGIN_SAML2_SYNCROLES
+    value: "{{ .Values.auth.saml.syncRoles }}"
 {{- if .Values.auth.saml.syncRoles }}
-    - name: ALLURE_LOGIN_SAML2_GROUPROLEATTRIBUTE
-      value: {{ .Values.auth.saml.groups.groupRoleAttribute }}
-    - name: ALLURE_LOGIN_SAML2_GROUPAUTHORITIES_ROLEUSERGROUPS
-      value: "{{ .Values.auth.saml.groups.roleUserGroups }}"
-    - name: ALLURE_LOGIN_SAML2_GROUPAUTHORITIES_ROLEADMINGROUPS
-      value: "{{ .Values.auth.saml.groups.roleAdminGroups }}"
+  - name: ALLURE_LOGIN_SAML2_GROUPROLEATTRIBUTE
+    value: {{ .Values.auth.saml.groups.groupRoleAttribute }}
+  - name: ALLURE_LOGIN_SAML2_GROUPAUTHORITIES_ROLEUSERGROUPS
+    value: "{{ .Values.auth.saml.groups.roleUserGroups }}"
+  - name: ALLURE_LOGIN_SAML2_GROUPAUTHORITIES_ROLEADMINGROUPS
+    value: "{{ .Values.auth.saml.groups.roleAdminGroups }}"
 {{- end }}
 {{- end }}
 
+{{- define "renderOPENIDEnvs" }}
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName }}_CLIENTNAME
+    value: {{ .Values.auth.openid.clientName }}
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName }}_CLIENTID
+    valueFrom:
+      secretKeyRef:
+        name: {{ template "allure-testops.secret.name" . }}
+        key: openIdClientId
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName }}_CLIENTSECRET
+    valueFrom:
+      secretKeyRef:
+        name: {{ template "allure-testops.secret.name" . }}
+        key: openIdClientSecret
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName }}_REDIRECTURI
+    value: {{ .Values.auth.openid.redirectUri }}
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_{{ .Values.auth.openid.providerName }}_SCOPE
+    value: {{ .Values.auth.openid.scope }}
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName }}_AUTHORIZATIONGRANTTYPE
+    value: {{ .Values.auth.openid.authorizationGrantType }}
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_{{ .Values.auth.openid.providerName }}_AUTHORIZATIONURI
+    value: {{ .Values.auth.openid.authorizationUri }}
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_{{ .Values.auth.openid.providerName }}_USERINFOURI
+    value: {{ .Values.auth.openid.userinfoUri }}
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_{{ .Values.auth.openid.providerName }}_ISSUERURI
+    value: {{ .Values.auth.openid.issuerUri }}
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_{{ .Values.auth.openid.providerName }}_USERNAMEATTRIBUTE
+    value: {{ .Values.auth.openid.usernameAttribute }}
+  - name: ALLURE_LOGIN_OPENID_DEFAULTROLE
+    value: {{ .Values.auth.openid.defaultRole }}
+{{- if .Values.auth.openid.syncRoles }}
+  - name: ALLURE_LOGIN_OPENID_SYNCROLES
+    value: "true"
+  - name: ALLURE_LOGIN_OPENID_GROUPROLEATTRIBUTE
+    value: {{ .Values.auth.openid.groupRoleAttribute }}
+  - name: ALLURE_LOGIN_OPENID_GROUPAUTHORITIES_ROLEUSERGROUPS
+    value: {{ .Values.auth.openid.roleUserGroups }}
+  - name: ALLURE_LOGIN_OPENID_GROUPAUTHORITIES_ROLEADMINGROUPS
+    value: {{ .Values.auth.openid.roleAdminGroups }}
+{{- end }}
+{{- end }}
 
 {{- define "renderCryptoEnvs" }}
   - name: ALLURE_CRYPTO_PASSWORD

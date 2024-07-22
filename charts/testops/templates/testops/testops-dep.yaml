@@ -80,6 +80,10 @@ spec:
 {{- include "renderSAMLEnvs" . | indent 10 }}
 {{- end }}
 
+{{- if .Values.auth.openid.enabled }}
+{{- include "renderOPENIDEnvs" . | indent 10 }}
+{{- end }}
+
 {{- if eq .Values.storage.type "S3" }}
 {{- include "renderS3Envs" . | indent 10 }}
 {{- end }}

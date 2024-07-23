@@ -1,0 +1,11 @@
+remote: origin
+target-branch: master
+chart-dirs:
+  - charts
+chart-repos:
+  - rabbitmq=https://charts.bitnami.com/bitnami
+  - postgresql=https://charts.bitnami.com/bitnami
+  - redis=https://charts.bitnami.com/bitnami
+  - minio=https://charts.bitnami.com/bitnami
+check-version-increment: false
+validate-maintainers: false

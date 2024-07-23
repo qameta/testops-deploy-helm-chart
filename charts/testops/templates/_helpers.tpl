@@ -464,6 +464,14 @@
     value: S3
   - name: ALLURE_BLOBSTORAGE_MAXCONCURRENCY
     value: "{{ .Values.maxS3Concurrency }}"
+{{- if .Values.storage.s3.advancedS3SDK.enabled }}
+  - name: ALLURE_BLOBSTORAGE_BULKREMOVESUPPORTED
+    value: {{ .Values.storage.s3.advancedS3SDK.bulkRemoveSupported }}
+  - name: ALLURE_BLOBSTORAGE_MOVESUPPORTED
+    value: {{ .Values.storage.s3.advancedS3SDK.moveSupported }}
+  - name: ALLURE_BLOBSTORAGE_COPYSUPPORTED
+    value: {{ .Values.storage.s3.advancedS3SDK.copySupported }}
+{{- end }}
   - name: ALLURE_BLOBSTORAGE_S3_ENDPOINT
 {{- if .Values.minio.enabled }}
     value: http://{{ template "allure-testops.minio.fullname" . }}:{{ .Values.minio.service.ports.api }}

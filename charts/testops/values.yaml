@@ -325,6 +325,11 @@ smtp:
 storage:
   type: "S3"
   s3:
+    advancedS3SDK:
+      enabled: true
+      bulkRemoveSupported: true
+      moveSupported: true
+      copySupported: true
     ############################################################################################################
     # For S3 endpoint URL use https://s3.<region>.amazonaws.com if your region is not us-east-1
     # For S3 endpoint URL use https://s3.amazonaws.com if your region is us-east-1

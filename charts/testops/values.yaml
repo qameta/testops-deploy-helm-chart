@@ -218,8 +218,8 @@ databaseInit:
 # 2) two datasources, one with Read/Write access for upload process, and replica with RO access for requesting
 # the historical information by dashboards (widgets)
 ############################################################################################################
-
 datasources:
+
 ############################################################################################################
 # mainDatasource defines parameters for connecting to the database in Read/ Write mode for the upload process
 # App related

@@ -218,8 +218,8 @@ databaseInit:
 # 2) two datasources, one with Read/Write access for upload process, and replica with RO access for requesting
 # the historical information by dashboards (widgets)
 ############################################################################################################
-
 datasources:
+
 ############################################################################################################
 # mainDatasource defines parameters for connecting to the database in Read/ Write mode for the upload process
 # App related
@@ -325,8 +325,13 @@ smtp:
 storage:
   type: "S3"
   s3:
+############################################################################################################
+# advancedS3SDK defines whether AWS S3 SDK ver 2 to support copy, move and DeleteObjects (many) operations
+# AWS S3 supports these operations, minio supports these operrations, for the rest S3 solutions please consult
+# the used solution manuals. If your solution does nos support one of the mentioned operations, please disable it below.
+############################################################################################################
     advancedS3SDK:
-      enabled: true
+      enabled: false
       bulkRemoveSupported: true
       moveSupported: true
       copySupported: true

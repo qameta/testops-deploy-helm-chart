@@ -466,11 +466,11 @@
     value: "{{ .Values.maxS3Concurrency }}"
 {{- if .Values.storage.s3.advancedS3SDK.enabled }}
   - name: ALLURE_BLOBSTORAGE_BULKREMOVESUPPORTED
-    value: {{ .Values.storage.s3.advancedS3SDK.bulkRemoveSupported }}
+    value: {{ .Values.storage.s3.advancedS3SDK.bulkRemoveSupported | quote}}
   - name: ALLURE_BLOBSTORAGE_MOVESUPPORTED
-    value: {{ .Values.storage.s3.advancedS3SDK.moveSupported }}
+    value: {{ .Values.storage.s3.advancedS3SDK.moveSupported | quote}}
   - name: ALLURE_BLOBSTORAGE_COPYSUPPORTED
-    value: {{ .Values.storage.s3.advancedS3SDK.copySupported }}
+    value: {{ .Values.storage.s3.advancedS3SDK.copySupported | quote}}
 {{- end }}
   - name: ALLURE_BLOBSTORAGE_S3_ENDPOINT
 {{- if .Values.minio.enabled }}

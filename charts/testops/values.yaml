@@ -567,13 +567,6 @@ auth:
     roleUserGroups: roleUserGroups
     roleAdminGroups: roleAdminGroups
 
-############################################################################################################
-# parameters define whether users can or cannot register via UI without involving administrator
-# it's highly recommended to turn off both options (set to false)
-# turning these on could lead to uncontrolled license consumption and potential security risk
-############################################################################################################
-registrationEnabled: false
-autoApprove: false
 
 ############################################################################################################
 # RBAC configuration block
@@ -751,7 +744,6 @@ widgetsCache:
   widgetsCustom:
     -1: 30m
 
-
 ############################################################################################################
 # Vault integration configuration block
 # This section configures integration with HashiCorp Vault for secret management.
@@ -774,3 +766,11 @@ vault:
   smtpPath: secret/data/smtp-credentials
   # Mount Path in the Deployment for Secrets
   mountPath: /mnt/secrets-store
+
+############################################################################################################
+# parameters define whether users can or cannot register via UI without involving administrator
+# it's highly recommended to turn off both options (set to false)
+# turning these on could lead to uncontrolled license consumption and potential security risk
+############################################################################################################
+registrationEnabled: false
+autoApprove: false

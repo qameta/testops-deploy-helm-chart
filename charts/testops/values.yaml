@@ -657,7 +657,7 @@ rabbitmq:
   # If deployed using this chart, RabbitMQ is managed by the original Helm chart provided by Bitnami
   # for the reference, please visit: https://github.com/bitnami/charts/tree/main/bitnami/rabbitmq
   #########################################################################################################
-  deployByChart: true
+  enabled: true
   hosts: amqps://mq.example.com:5672
   vhost: "/"
   # username and password to connect to RabbitMQ server as per the deployed config
@@ -674,7 +674,7 @@ rabbitmq:
 
 redis:
   # Set to 'false' if you have Redis deployed in your infrastructure, and you are allowed to use it with Allure TestOps
-  deployByChart: true
+  enabled: true
   # if deployByChart is false, then the settings below are required
   host: redis.example.com
   port: 6379

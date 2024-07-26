@@ -21,7 +21,7 @@ dependencies:
   - name: rabbitmq
     version: 12.14.0
     repository: https://charts.bitnami.com/bitnami
-    condition: rabbitmq.deployByChart
+    condition: rabbitmq.enabled
   - name: postgresql
     version: 12.12.10
     repository: https://charts.bitnami.com/bitnami
@@ -29,7 +29,7 @@ dependencies:
   - name: redis
     version: 18.16.1
     repository: https://charts.bitnami.com/bitnami
-    condition: redis.deployByChart
+    condition: redis.enabled
   - name: minio
     version: 13.6.4
     repository: https://charts.bitnami.com/bitnami

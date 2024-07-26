@@ -1,14 +1,31 @@
-{{- if .Values.rbac.enabled -}}
-# create rbac role with permission for discovery
+{{- if .Values.rbac.enabled }}
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1
+apiVersion: {{ include "common.capabilities.rbac.apiVersion" . }}
 metadata:
-  name: {{ template "allure-testops.name" . }}-namespace-reader
-  labels:
-    app: {{ template "allure-testops.name" . }}
-    chart: {{ template "allure-testops.chart" . }}
-    heritage: {{ .Release.Service }}
-    release: {{ .Release.Name }}
+  name: {{ include "common.names.fullname" . }}
+  namespace: {{ .Release.Namespace | quote }}
+  labels: {{- include "common.labels.standard" . | nindent 4 }}
+    {{- if .Values.commonLabels }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
+    {{- end }}
+  {{- if .Values.commonAnnotations }}
+  annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
+  {{- end }}
+# yamllint disable rule:indentation
 rules:
-{{ toYaml .Values.rbac.rules | indent 2}}
-{{- end -}}
+  {{- $pspAvailable := (semverCompare "<1.25-0" (include "common.capabilities.kubeVersion" .)) -}}
+  {{- if and $pspAvailable .Values.psp.create }}
+  - apiGroups:
+      - 'policy'
+    resources:
+      - 'podsecuritypolicies'
+    verbs:
+      - 'use'
+    resourceNames:
+      - {{ include "common.names.fullname" . }}
+  {{- end }}
+  {{- if .Values.rbac.rules }}
+  {{- include "common.tplvalues.render" ( dict "value" .Values.rbac.rules "context" $ ) | nindent 2 }}
+  {{- end }}
+        # yamllint enable rule:indentation
+{{- end }}

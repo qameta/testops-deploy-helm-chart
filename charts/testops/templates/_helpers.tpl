@@ -546,7 +546,7 @@
 
 {{- define "renderWidgetsCache" }}
   - name: ALLURE_CACHE-TTL_ENABLED
-    value: {{ .Values.widgetsCache.enabled }}
+    value: {{ .Values.widgetsCache.enabled | quote }}
   - name: ALLURE_CACHE-TTL_BY-DEFAULT
     value: {{ .Values.widgetsCache.byDefault }}
   - name: ALLURE_CACHE-TTL_WIDGETS_AUTOMATION-TREND

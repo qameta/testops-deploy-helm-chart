@@ -575,6 +575,8 @@ auth:
 ############################################################################################################
 rbac:
   enabled: true
+  serviceAccountName: allure-testops-sa
+  serviceAccountCreate: true
   rules:
     - apiGroups:
         - ''

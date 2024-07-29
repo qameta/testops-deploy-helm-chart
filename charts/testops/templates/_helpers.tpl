@@ -24,7 +24,7 @@
 {{- end -}}
 
 {{- define "allure-testops.redis.fullname" -}}
-{{- if .Values.redis.deployByChart }}
+{{- if .Values.redis.enabled }}
   {{- printf "%s-%s" .Release.Name "redis-master" | trunc 63 | trimSuffix "-" }}
 {{- else }}
   {{- print .Values.redis.host }}
@@ -52,7 +52,7 @@
 {{- end }}
 
 {{- define "rabbitHost" }}
-{{- if .Values.rabbitmq.deployByChart }}
+{{- if .Values.rabbitmq.enabled }}
   {{- printf "amqp://%s-%s:%.f" .Release.Name "rabbitmq" .Values.rabbitmq.service.ports.amqp | trunc 63 | trimSuffix "-" }}
 {{- else }}
   {{- print .Values.rabbitmq.hosts }}
@@ -546,7 +546,7 @@
 
 {{- define "renderWidgetsCache" }}
   - name: ALLURE_CACHE-TTL_ENABLED
-    value: {{ .Values.widgetsCache.enabled }}
+    value: {{ .Values.widgetsCache.enabled | quote }}
   - name: ALLURE_CACHE-TTL_BY-DEFAULT
     value: {{ .Values.widgetsCache.byDefault }}
   - name: ALLURE_CACHE-TTL_WIDGETS_AUTOMATION-TREND

@@ -114,12 +114,6 @@
     value: kubernetes
   - name: ALLURE_ENDPOINT
     value: "{{ ternary "https" "http" .Values.network.tls.enabled }}://{{ .Values.instanceFqdn }}"
-  - name: ALLURE_EE_GATEWAY_SERVICE_HOST
-    value: "{{ template "allure-testops.fullname" . }}"
-  - name: ALLURE_EE_TESTOPS_SERVICE_PORT
-    value: "{{ .Values.port }}"
-  - name: ALLURE_EE_GATEWAY_SERVICE_PORT
-    value: "{{ .Values.port }}"
   - name: SERVER_PORT
     value: "{{ .Values.port }}"
   - name: MANAGEMENT_PROMETHEUS_METRICS_EXPORT_ENABLED

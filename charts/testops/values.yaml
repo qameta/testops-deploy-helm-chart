@@ -173,7 +173,11 @@ certificates:
 # env section allows passing extra environment variables to the service in case you require something specific
 # and it is not included into the standard chart
 # usage example
-# ENVVAR: value
+# env:
+#   open:
+#     ENV_VAR_ONE: "value1"
+#     ENV_VAR_TWO: "value2"
+#     ENV_VAR_THREE: value3
 ############################################################################################################
 env:
   open: {}

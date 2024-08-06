@@ -13,7 +13,7 @@ spec:
       version: v1
   endpoints:
     - port: http
-      path: "/management/prometheus"
+      path: "/api/management/prometheus"
       interval: 10s
       honorLabels: true
 {{- end }}

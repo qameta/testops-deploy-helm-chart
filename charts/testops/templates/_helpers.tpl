@@ -287,7 +287,7 @@
         key: openIdClientSecret
   - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName }}_REDIRECTURI
     value: {{ .Values.auth.openid.redirectUri }}
-  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_{{ .Values.auth.openid.providerName }}_SCOPE
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName }}_SCOPE
     value: {{ .Values.auth.openid.scope }}
   - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName }}_AUTHORIZATIONGRANTTYPE
     value: {{ .Values.auth.openid.authorizationGrantType }}

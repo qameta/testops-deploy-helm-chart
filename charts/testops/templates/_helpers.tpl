@@ -273,34 +273,52 @@
 {{- end }}
 
 {{- define "renderOPENIDEnvs" }}
-  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName }}_CLIENTNAME
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName | upper }}_CLIENTNAME
     value: {{ .Values.auth.openid.clientName }}
-  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName }}_CLIENTID
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName | upper }}_CLIENTID
     valueFrom:
       secretKeyRef:
         name: {{ template "allure-testops.secret.name" . }}
         key: openIdClientId
-  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName }}_CLIENTSECRET
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName | upper }}_CLIENTSECRET
     valueFrom:
       secretKeyRef:
         name: {{ template "allure-testops.secret.name" . }}
         key: openIdClientSecret
-  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName }}_REDIRECTURI
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName | upper }}_REDIRECTURI
     value: {{ .Values.auth.openid.redirectUri }}
-  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName }}_SCOPE
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName | upper }}_SCOPE
     value: {{ .Values.auth.openid.scope }}
-  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName }}_AUTHORIZATIONGRANTTYPE
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName | upper }}_AUTHORIZATIONGRANTTYPE
     value: {{ .Values.auth.openid.authorizationGrantType }}
-  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_{{ .Values.auth.openid.providerName }}_AUTHORIZATIONURI
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_{{ .Values.auth.openid.providerName | upper }}_AUTHORIZATIONURI
     value: {{ .Values.auth.openid.authorizationUri }}
-  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_{{ .Values.auth.openid.providerName }}_USERINFOURI
-    value: {{ .Values.auth.openid.userinfoUri }}
-  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_{{ .Values.auth.openid.providerName }}_ISSUERURI
-    value: {{ .Values.auth.openid.issuerUri }}
-  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_{{ .Values.auth.openid.providerName }}_USERNAMEATTRIBUTE
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_{{ .Values.auth.openid.providerName | upper }}_USERNAMEATTRIBUTE
     value: {{ .Values.auth.openid.usernameAttribute }}
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_{{ .Values.auth.openid.providerName | upper }}_PROVIDER
+    value: {{ .Values.auth.openid.providerName }}
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_{{ .Values.auth.openid.providerName | upper }}_JWKSETURI
+    value: {{ .Values.auth.openid.jwksSetUri }}
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_{{ .Values.auth.openid.providerName | upper }}_TOKENURI
+    value: {{ .Values.auth.openid.tokenUri }}
   - name: ALLURE_LOGIN_OPENID_DEFAULTROLE
     value: {{ .Values.auth.openid.defaultRole }}
+{{- if .Values.auth.openid.userinfoUri }}
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_{{ .Values.auth.openid.providerName | upper }}_USERINFOURI
+    value: {{ .Values.auth.openid.userinfoUri }}
+{{- end }}
+{{- if .Values.auth.openid.issuerUri }}
+  - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_{{ .Values.auth.openid.providerName | upper }}_ISSUERURI
+    value: {{ .Values.auth.openid.issuerUri }}
+{{- end }}
+{{- if .Values.auth.openid.firstNameAttribute }}
+  - name: ALLURE_LOGIN_OPENID_FIRSTNAMEATTRIBUTE
+    value: {{ .Values.auth.openid.firstNameAttribute }}
+{{- end }}
+{{- if .Values.auth.openid.lastNameAttribute }}
+  - name: ALLURE_LOGIN_OPENID_LASTAMEATTRIBUTE
+    value: {{ .Values.auth.openid.lastNameAttribute }}
+{{- end }}
 {{- if .Values.auth.openid.syncRoles }}
   - name: ALLURE_LOGIN_OPENID_SYNCROLES
     value: "true"
@@ -310,6 +328,9 @@
     value: {{ .Values.auth.openid.roleUserGroups }}
   - name: ALLURE_LOGIN_OPENID_GROUPAUTHORITIES_ROLEADMINGROUPS
     value: {{ .Values.auth.openid.roleAdminGroups }}
+{{- else }}
+  - name: ALLURE_LOGIN_OPENID_SYNCROLES
+    value: "false"
 {{- end }}
 {{- end }}
 

@@ -561,7 +561,7 @@ auth:
     redirectUri: https://<your-domain>/login/oauth2/code/<add_providerName_here>
     scope: openid,email,profile
     authorizationGrantType: authorization_code
-    authorizationUri: http://keycloak/realms/<you_realm>/protocol/openid-connect/auth
+    authorizationUri: http://<open_id_provider_url>/somepath/auth
     jwksSetUri: http://<open_id_provider_url>/somepath/keys
     tokenUri: http://<open_id_provider_url>/somepath/token
     usernameAttribute: preferred_username
@@ -570,12 +570,15 @@ auth:
     groupRoleAttribute: groupRoleAttribute
     roleUserGroups: roleUserGroups
     roleAdminGroups: roleAdminGroups
-# ToDo
-# userinfoUri: http://keycloak/realms/<you_realm>/protocol/openid-connect/userinfo
-# issuerUri: http://keycloak/realms/<you_realm>
+# userinfoUri is optional and has to be left empty unless required
+# userinfoUri: http://<open_id_provider_url>/somepath/userinfo
+# issuerUri is optional and has to be left empty unless required
+# issuerUri: http://<open_id_provider_url>/issuer/something
     userinfoUri:
     issuerUri:
+# claim key with user name (first name), e.g. first_name
     firstNameAttribute:
+# claim key with user surname (last name), e.g. last_name
     lastNameAttribute:
 
 ############################################################################################################

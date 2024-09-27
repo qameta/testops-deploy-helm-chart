@@ -1,3 +1,9 @@
+# 2024-09-23 this repository is outdated and is no longer maintained
+
+We've moved the development of the Helm chart to a private VCS and repo. Please refer to the documentation pages for correct links and instructions.
+
+
+
 # Allure TestOps deploy in Kubernetes
 
 Here we give just a recap on how to deploy Allure TestOps in your own Kubernetes cluster using Helm chart maintained by Qameta Software Inc.

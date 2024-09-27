@@ -2,6 +2,8 @@
 
 We've moved the development of the Helm chart to a private VCS and repo. Please refer to the documentation pages for correct links and instructions.
 
+[Please use the documentation pages instead](https://docs.qameta.io/allure-testops/install/kubernetes/)
+
 
 
 # Allure TestOps deploy in Kubernetes
